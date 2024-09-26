@@ -3,10 +3,10 @@ SRC_DIR = src
 BIN_DIR = bin
 
 # Buscar todos os arquivos .java na pasta src
-SOURCES := $(shell find $(SRC_DIR) -name "*.java")
+SOURCES := $(wildcard $(SRC_DIR)/*.java)
 
 # Definir o nome da classe principal
-MAIN_CLASS = Main
+MAIN_CLASS = src.Main
 
 # Definir o nome da aplicação
 APP_NAME = ForcaJavaApp
