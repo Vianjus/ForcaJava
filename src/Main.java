@@ -9,7 +9,7 @@ public class Main {
 
         final int WIDTH = 800;
         final int HEIGHT = 600;
-        final String TITLE = "Hangman (Java Edition)";
+        final String TITLE = "Forca (Java Edition)";
         final ImageIcon backgroundImg = new ImageIcon("img\\start_screen_bg.gif");
 
 
@@ -20,7 +20,7 @@ public class Main {
         screen.setTitle(TITLE);
         screen.setLocationRelativeTo(null);
         screen.setResizable(false);
-        screen.setDefaultCloseOperation(screen.EXIT_ON_CLOSE);
+        screen.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JPanel container = new JPanel();
         container.setLayout(cardLayout);

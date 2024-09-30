@@ -13,7 +13,7 @@ public class Words {
     public Words() {
         this.listOfWords = new ArrayList<>();
         this.rand = new Random();
-        this.emergencyWord = new Word("hangman");
+        this.emergencyWord = new Word("forca");
     }
 
     public void addWordsToListOfWords(String wordCategory) {

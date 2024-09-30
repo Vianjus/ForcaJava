@@ -40,16 +40,16 @@ public class MainGamePanel extends JPanel implements ActionListener {
 
         this.gameOver = false;
 
-        int buttonWidth = 80;
+        int buttonWidth = 90;
         int buttonHeight = 30;
         int buttonX = 10;
 
-        String newButtonText = "NEW";
+        String newButtonText = "NOVO";
         int newButtonY = 10;
         this.newButton = new NewButton(newButtonText, buttonX, newButtonY, buttonWidth, buttonHeight);
         this.newButton.addActionListener(this);
 
-        String backButtonText = "BACK";
+        String backButtonText = "VOLTAR";
         int backButtonY = newButtonY + buttonHeight + 10;
         this.backButton = new BackButton(backButtonText, buttonX, backButtonY, buttonWidth, buttonHeight, container, cardLayout);
         this.backButton.addActionListener(this);
@@ -174,7 +174,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
 
     private String gameOverText() {
 
-        return this.gameOver && this.guessedWordEqualsWord() ? "YOU WIN! :)" : "YOU LOSE! :(";
+        return this.gameOver && this.guessedWordEqualsWord() ? "VOCÊ VENCEU!" : "VOCÊ PERDEU!";
     }
 
     private void drawGameOverText(Graphics2D g2D) {
@@ -188,7 +188,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
         int textX = (this.WIDTH / 2) - (g2D.getFontMetrics().stringWidth(text) / 2);
         int textY = (this.HEIGHT / 2) - (g2D.getFontMetrics().getHeight() / 2);
 
-        if (text.equals("YOU WIN! :)")) {
+        if (text.equals("VOCÊ VENCEU!")) {
             g2D.setPaint(Color.GREEN);
         }
         else {
@@ -278,7 +278,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
     private void resetGame(ActionEvent e) {
 
         if (e.getSource() == this.backButton) {
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to go back?");
+            int result = JOptionPane.showConfirmDialog(this, "Deseja voltar?");
             if (result == 0) {
                 this.words.resetListOfWords();
                 this.qwertyKeyboard.resetKeyboard();
@@ -286,7 +286,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
             }
         }
         else {
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to start a New Game?");
+            int result = JOptionPane.showConfirmDialog(this, "Deseja iniciar um novo jogo?");
             if (result == 0) {
                 Word word = words.selectRandomWord();
                 word.splitWordToLetters();

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class CategoryScreenPanel extends JPanel implements ActionListener {
 
-    final String[] categoryButtonsText = {"Film", "Music", "Random"};
+    final String[] categoryButtonsText = {"FACIL", "MEDIO", "DIFICIL"};
     private CategoryButton[] categoryButtons = new CategoryButton[3];
     private BackButton backButton;
     private MainGamePanel mainGamePanel;
@@ -41,7 +41,7 @@ public class CategoryScreenPanel extends JPanel implements ActionListener {
             buttonsPanel.add(categoryButton);
         }
 
-        String backButtonText = "BACK";
+        String backButtonText = "VOLTAR";
         this.backButton = new BackButton(backButtonText, container, cardLayout);
         this.backButton.addActionListener(this);
         buttonsPanel.add(this.backButton);
