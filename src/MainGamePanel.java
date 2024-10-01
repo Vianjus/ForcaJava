@@ -277,16 +277,38 @@ public class MainGamePanel extends JPanel implements ActionListener {
 
     private void resetGame(ActionEvent e) {
 
+        Object[] options = {"Sim", "Não"};
+
         if (e.getSource() == this.backButton) {
-            int result = JOptionPane.showConfirmDialog(this, "Deseja voltar?");
+            int result = JOptionPane.showOptionDialog(
+                null, 
+                "Deseja voltar?",      // Mensagem
+                "Confirmação",           // Título
+                JOptionPane.YES_NO_OPTION,     // Tipo de opções
+                JOptionPane.QUESTION_MESSAGE,  // Tipo de mensagem
+                null,                     // Ícone (null para ícone padrão)
+                options,                       // Opções personalizadas
+                options[0]                     // Padrão (primeira opção selecionada)
+            );
+
             if (result == 0) {
                 this.words.resetListOfWords();
                 this.qwertyKeyboard.resetKeyboard();
                 this.backButton.swapCard("2");
             }
         }
+
         else {
-            int result = JOptionPane.showConfirmDialog(this, "Deseja iniciar um novo jogo?");
+            int result = JOptionPane.showOptionDialog(
+                null, 
+                "Deseja iniciar um novo jogo?", // Mensagem
+                "Confirmação",                    // Título
+                JOptionPane.YES_NO_OPTION,              // Tipo de opções
+                JOptionPane.QUESTION_MESSAGE,           // Tipo de mensagem
+                null,                              // Ícone (null para ícone padrão)
+                options,                                // Opções personalizadas
+                options[0]                              // Padrão (primeira opção selecionada)
+        );
             if (result == 0) {
                 Word word = words.selectRandomWord();
                 word.splitWordToLetters();

@@ -12,8 +12,6 @@ public class Main {
         final String TITLE = "Forca (Java Edition)";
         final ImageIcon backgroundImg = new ImageIcon("img\\start_screen_bg.gif");
 
-
-
         JFrame screen = new JFrame();
         CardLayout cardLayout = new CardLayout();
         screen.setSize(new Dimension(WIDTH, HEIGHT));
