@@ -9,9 +9,6 @@ public class Word {
     }
 
     public void splitWordToLetters() {
-        /*
-        Splits the word into letters for comparison against letter clicked on keyboard
-         */
 
         this.lettersInWord = this.word.toCharArray();
     }

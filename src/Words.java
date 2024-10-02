@@ -17,9 +17,6 @@ public class Words {
     }
 
     public void addWordsToListOfWords(String wordCategory) {
-        /*
-        Add words from file to the list of words
-         */
 
         try {
             File words = new File("words\\" + wordCategory + ".txt");
@@ -39,9 +36,6 @@ public class Words {
     }
 
     public Word selectRandomWord() {
-        /*
-        Selects a random word from the list of words
-         */
 
         if (this.listOfWords.size() > 0) {
             int upperbound = this.listOfWords.size();

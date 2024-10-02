@@ -10,7 +10,7 @@ public class Main {
         final int WIDTH = 800;
         final int HEIGHT = 600;
         final String TITLE = "Forca (Java Edition)";
-        final ImageIcon backgroundImg = new ImageIcon("img\\start_screen_bg.gif");
+        final ImageIcon backgroundImg = new ImageIcon("img\\start_screen.png");
 
         JFrame screen = new JFrame();
         CardLayout cardLayout = new CardLayout();

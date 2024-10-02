@@ -1,59 +1,105 @@
-The Shawshank Redemption
-The Godfather
-The Dark Knight
-Pulp Fiction
-Schindler's List
-Inception
-Fight Club
-Forrest Gump
-The Matrix
-Goodfellas
-Parasite
-Interstellar
-City of God
-Spirited Away
-Saving Private Ryan
-The Green Mile
-Life Is Beautiful
-Seven Samurai
-Whiplash
-Untouchable
-The Prestige
-The Departed
-The Pianist
-Gladiator
-American History X
-The Usual Suspects
-Leon
-The Lion King
-Grave of the Fireflies
-Back to the Future
-Hamilton
-Joker
-Coco
-Django Unchained
-The Dark Knight Rises
-The Lives of Others
-Oldboy
-Memento
-Princess Mononoke
-Raiders of the Lost Ark
-The Shining
-Apocalypse Now
-Alien
-The Hunt
-Inglorious Basterds
-Good Will Hunting
-Toy Story
-Braveheart
-Reservoir Dogs
-Snatch
-Full Metal Jacket
-Scarface
-Taxi Driver
-Up
-The Wolf of Wall Street
-Pan's Labyrinth
-Batman Begins
-Die Hard
-Logan
+amigo
+casa
+sol
+flor
+bola
+livro
+gato
+amor
+mala
+carro
+peixe
+vento
+pato
+mesa
+porta
+sapato
+uva
+rio
+nuvem
+dado
+barco
+lobo
+rato
+parede
+pedra
+cavalo
+chave
+copo
+tijolo
+arara
+planta
+tigre
+foto
+dente
+macaco
+roupa
+vidro
+lanterna
+papel
+lago
+brinquedo
+estrela
+janela
+mala
+galinha
+cachorro
+cama
+camisa
+caminho
+dedo
+formiga
+grilo
+fogo
+lagoa
+luz
+areia
+cachorro
+folha
+menino
+menina
+navio
+ovo
+plano
+pombo
+porta
+quadro
+horas
+sapato
+telefone
+tela
+trator
+tulipa
+vaso
+vela
+viga
+bala
+bola
+cadeira
+caderno
+caneta
+cabelo
+cesta
+sombra
+colher
+copo
+escada
+espelho
+faca
+fivela
+foca
+fruta
+garrafa
+gelo
+janela
+lagarto
+lesma
+lente
+limonada
+machado
+mochila
+ninho
+pincel
+polvo
+rede
+roda

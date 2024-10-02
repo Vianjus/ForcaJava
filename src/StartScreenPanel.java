@@ -13,18 +13,15 @@ public class StartScreenPanel extends JPanel implements ActionListener {
 
         JLabel startScreenBg = new JLabel(backgroundImg);
 
-        // Sets up the button dimensions
         int buttonWidth = 100;
         int buttonHeight = 50;
         int buttonY = HEIGHT - (buttonHeight * 3);
 
-        // Sets up the PLAY button
         String playButtonText = "JOGAR";
         int playButtonX = (WIDTH / 2) - (buttonWidth + 20);
         this.playButton = new PlayButton(playButtonText, playButtonX, buttonY, buttonWidth, buttonHeight, container, cardLayout);
         this.playButton.addActionListener(this);
 
-        // Sets up the EXIT button
         String exitButtonText = "SAIR";
         int exitButtonX = (WIDTH / 2) + 20;
         this.exitButton = new ExitButton(exitButtonText, exitButtonX, buttonY, buttonWidth, buttonHeight);

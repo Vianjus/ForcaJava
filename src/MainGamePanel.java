@@ -198,10 +198,6 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private int calculatePlaceholderLength(String word, int space) {
-        /*
-        Calculates the length of the letter placeholder based on the screen width, space between placeholders and the
-        length of the word to dynamically adjust the placeholder size to fit the screen.
-         */
 
         int placeholderLength;
         if (word.length() <= 10) {
