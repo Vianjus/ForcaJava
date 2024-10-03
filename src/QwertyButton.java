@@ -4,6 +4,7 @@ import javax.swing.*;
 public class QwertyButton extends JButton {
     private char value;
 
+    // configuração das letras para cada botão:
     public QwertyButton(char value) {
         this.value = value;
 

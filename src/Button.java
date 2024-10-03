@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Button extends JButton {
-
+	// Configurações das dimensões, funções e conteúdo de cada botão
     private String text;
     private int x;
     private int y;
@@ -21,7 +21,7 @@ public class Button extends JButton {
         this.setText(this.text);
         this.setFocusable(false);
     }
-
+    
     public Button(String text) {
         this.text = text;
 
@@ -31,7 +31,7 @@ public class Button extends JButton {
 }
 
 class PlayButton extends Button {
-
+	// Botão de 'jogar' (propriedades diferentes de um botão letra - design x texto)
     private JPanel container;
     private CardLayout cardLayout;
 
@@ -47,7 +47,7 @@ class PlayButton extends Button {
 }
 
 class ExitButton extends Button {
-
+	// Botão de 'sair' (propriedades diferentes de um botão letra - design x texto)
     public ExitButton(String text, int x, int y, int width, int height) {
         super(text, x, y, width, height);
     }
@@ -55,7 +55,7 @@ class ExitButton extends Button {
 }
 
 class BackButton extends Button {
-
+	// Botão de 'voltar' (propriedades diferentes de um botão letra - design x texto)
     private JPanel container;
     private CardLayout cardLayout;
 
@@ -77,7 +77,7 @@ class BackButton extends Button {
 }
 
 class CategoryButton extends Button {
-
+	// Botão de 'selecionar categoria' (propriedades diferentes de um botão letra - design e texto)
     private String category;
     private JPanel container;
     private CardLayout cardLayout;
@@ -92,7 +92,7 @@ class CategoryButton extends Button {
         words.addWordsToListOfWords(this.getCategory());
     }
 
-    public void swapCard(Words words, MainGamePanel mainGamePanel) {
+    public void swapCard(Words words, MainGamePanel mainGamePanel) { // define a palavra, lança na tela
         this.createListOfWords(words);
         Word word = words.selectRandomWord();
         word.splitWordToLetters();
@@ -101,17 +101,17 @@ class CategoryButton extends Button {
         this.cardLayout.show(this.container, "3");
     }
 
-    public String getCategory() {
+    public String getCategory() { // retorna a categoria atual
         return this.category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(String category) { // define a categoria atual
         this.category = category;
     }
 }
 
 class NewButton extends Button {
-
+	// Criação de um novo botão específico, caso necessário
     public NewButton(String text, int x, int y, int width, int height) {
         super(text, x, y, width, height);
     }

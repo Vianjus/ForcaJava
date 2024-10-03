@@ -6,14 +6,14 @@ import java.awt.event.ActionListener;
 //import java.util.Arrays;
 
 public class MainGamePanel extends JPanel implements ActionListener {
-
-    private int WIDTH;
-    private int HEIGHT;
+	// Inicialização dos atributos e elementos decorativos que compõem a tela:
+    private int WIDTH; 
+    private int HEIGHT; 
     private Image backgroundImg = new ImageIcon("img\\chalkboard.gif").getImage();
-    private Image[] gallows = new Image[7];
+    private Image[] gallows = new Image[7]; // Uma foto para cada parte do corpo do boneco na forca (7)
     private NewButton newButton;
     private BackButton backButton;
-    private QwertyKeyboard qwertyKeyboard;
+    private QwertyKeyboard qwertyKeyboard; // QWERTY é um padrão de teclado -> simula os teclados físicos atuais
     private Words words;
     private Word randomWord;
     private char[] guessedLetters;
@@ -21,47 +21,50 @@ public class MainGamePanel extends JPanel implements ActionListener {
     private boolean gameOver;
 
     public MainGamePanel(int WIDTH, int HEIGHT, JPanel container, CardLayout cardLayout, Words words) {
-
+    	// Atributos e elementos da tela principal
         this.WIDTH = WIDTH;
         this.HEIGHT = HEIGHT;
-
         this.words = words;
-
         this.setLayout(null);
 
+        // Inicialização do teclado para adivinhação
         this.qwertyKeyboard = new QwertyKeyboard();
-
+        // Número de chances máxima
         this.numOfGuesses = 6;
-
+        
         for (int i=0; i<numOfGuesses + 1; i++) {
             Image img = new ImageIcon("img\\Gallows" + i + ".gif").getImage();
             this.gallows[i] = img;
         }
-
+        // Configurações do jogo e botões do teclado virtual:
         this.gameOver = false;
 
         int buttonWidth = 90;
         int buttonHeight = 30;
         int buttonX = 10;
-
+        
+        // Botão "novo" -> definição, conteúdo, função e escuta;
         String newButtonText = "NOVO";
         int newButtonY = 10;
         this.newButton = new NewButton(newButtonText, buttonX, newButtonY, buttonWidth, buttonHeight);
         this.newButton.addActionListener(this);
 
+        // Botão "voltar" -> definição, conteúdo, função e escuta;
         String backButtonText = "VOLTAR";
         int backButtonY = newButtonY + buttonHeight + 10;
         this.backButton = new BackButton(backButtonText, buttonX, backButtonY, buttonWidth, buttonHeight, container, cardLayout);
         this.backButton.addActionListener(this);
 
+        // JPanel próprio para a área do teclado
         JPanel keyboard = new JPanel();
-        int keyboardWidth = this.WIDTH - 20;
+        int keyboardWidth = this.WIDTH - 20; 
         int keyboardHeight = this.HEIGHT / 2 - 150;
         int keyboardX = 2;
         int keyboardY = this.HEIGHT / 2 + 108;
-        keyboard.setBounds(keyboardX, keyboardY, keyboardWidth, keyboardHeight);
-        keyboard.setLayout(new GridLayout(3, 9));
+        keyboard.setBounds(keyboardX, keyboardY, keyboardWidth, keyboardHeight); // define as dimensões do teclado calculadas
+        keyboard.setLayout(new GridLayout(3, 9)); // 3 linhas e 9 colunas para as letras, simulando o padrão QWERTY
 
+        // Mostrar e ouvir botões - teclado
         this.qwertyKeyboard.displayButtons(keyboard);
         this.addActionListenerToQwertyKeyboard();
 
@@ -71,13 +74,16 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) { 
+    	// *Contém elementos gerados via netbeans* - design
 
         Graphics2D g2D = (Graphics2D) g.create();
         super.paintComponent(g2D);
 
         char[] wordToChar = this.randomWord.getLettersInWord();
         int space = 10;
+        
+        // Cálculo das dimensões dos eixos e espaços
         int placeholderLength = this.calculatePlaceholderLength(this.randomWord.getWord(), space);
         int x1 = this.calculateX1(placeholderLength, this.randomWord.getWord(), space);
         int y1 = this.HEIGHT / 2 + 90;
@@ -87,24 +93,22 @@ public class MainGamePanel extends JPanel implements ActionListener {
         String fontName = g2D.getFont().getFontName();
         Font font = new Font(fontName, Font.BOLD, fontSize);
 
+        // Elementos gráficos -- netbeans
         g2D.drawImage(this.backgroundImg, 0, 0, null);
-
         int gallowsX = (this.WIDTH / 2) - this.gallows[0].getWidth(null) / 2;
         int gallowsY = 20;
         g2D.drawImage(this.gallows[(this.numOfGuesses - 6) * -1], gallowsX, gallowsY, null);
-
         g2D.setPaint(Color.white);
         g2D.setStroke(new BasicStroke(5));
         g2D.setFont(font);
-
         this.drawLetterPlaceholders(g2D, wordToChar, x1, y1, x2, y2, space, placeholderLength);
-
         this.drawGuessedLetters(g2D, x1, y1, x2, space, placeholderLength);
 
+        // Função que revela a palavra, caso o jogo seja encerrado
         if (this.gameOver && !this.guessedWordEqualsWord()) {
             this.drawMissingLetters(g2D, x1, y1, x2, space, placeholderLength);
         }
-
+        // Função que ilustra o fim de jogo na tela;
         if (this.gameOver) {
             this.drawGameOverText(g2D);
         }
@@ -135,7 +139,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private void drawGuessedLetters(Graphics2D g2D, int x1, int y1, int x2, int space, int placeholderLength) {
-
+    	// Função para exibir na tela quais as letras já selecionadas pelo jogador
         int charX1 = x1;
         int charX2 = x2;
 
@@ -153,7 +157,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private void drawMissingLetters(Graphics2D g2D, int x1, int y1, int x2, int space, int placeholderLength) {
-
+    	// Função que mostra quais letras ainda faltam 
         g2D.setPaint(Color.RED);
 
         int charX1 = x1;
@@ -173,12 +177,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private String gameOverText() {
-
+    	// função boolean que mostra o resultado do jogo
         return this.gameOver && this.guessedWordEqualsWord() ? "VOCÊ VENCEU!" : "VOCÊ PERDEU!";
     }
 
-    private void drawGameOverText(Graphics2D g2D) {
-
+    private void drawGameOverText(Graphics2D g2D) { // gerado via netbeans - elementos gráficos
+    	
+    	// Função que decora a tela de acordo com o resultado do jogo -> verde para vitória, vermelho para derrota;	
         String text = this.gameOverText();
         String fontName = g2D.getFont().getFontName();
         int fontSize = 100;
@@ -198,6 +203,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private int calculatePlaceholderLength(String word, int space) {
+    	// Função suporte -> garante que as letras não extrapolem os limites de largura e altrua, distorçam a tela
 
         int placeholderLength;
         if (word.length() <= 10) {
@@ -210,13 +216,13 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private int calculateX1(int placeholderLength, String word, int space) {
-
+    	// Cálculo do elemento x - largura
         int x = (this.WIDTH / 2) - ((placeholderLength * word.length() + space * (word.length() + 1)) / 2);
         return x;
     }
 
     private boolean checkLetter(char buttonValue) {
-
+    	// Função que checa se a letra selecionada faz parte da palavra ou não
         for (int i=0; i<this.guessedLetters.length; i++) {
             if (buttonValue == this.randomWord.getLettersInWord()[i]) {
                 return true;
@@ -225,8 +231,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
         return false;
     }
 
-    private void updateLetters(char buttonValue) {
-
+    private void updateLetters(char buttonValue) { // Lembrar de trocar - função mal otimizada
         for (int i=0; i<this.guessedLetters.length; i++) {
             if (buttonValue == this.randomWord.getLettersInWord()[i]) {
                 this.guessedLetters[i] = this.randomWord.getLettersInWord()[i];
@@ -235,7 +240,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private void updateScreen(QwertyButton qwertyButton) {
-
+    	// Função que atualiza a tela: as chances do jogador e a cor-tema de acordo com o palpite
         boolean letterInWord = this.checkLetter(qwertyButton.getValue());
 
         if (letterInWord) {
@@ -264,7 +269,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private boolean guessedWordEqualsWord() {
-
+    	// Função que checa se a palavra palpitada pelo jogador é a correta
         String word = this.randomWord.getWord();
         String guessedWord = String.valueOf(this.guessedLetters);
 
@@ -272,7 +277,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     private void resetGame(ActionEvent e) {
-
+    	// FUnção que reseta o jogo: palavras, temas, letras e elementos background
         Object[] options = {"Sim", "Não"};
 
         if (e.getSource() == this.backButton) {
@@ -322,6 +327,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
         this.randomWord = word;
     }
 
+    // Função de set para as letras já palpitadas - suporte
     public void setGuessedLetters(Word word) {
         char[] wordToChar = word.getLettersInWord();
         this.guessedLetters = new char[wordToChar.length];
@@ -332,7 +338,7 @@ public class MainGamePanel extends JPanel implements ActionListener {
             }
         }
     }
-
+    // Função que define as funções de escuta para cada tecla
     private void addActionListenerToQwertyKeyboard() {
         for (QwertyButton qwertyButton : this.qwertyKeyboard.getButtons()) {
             qwertyButton.addActionListener(this);
@@ -340,14 +346,18 @@ public class MainGamePanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.newButton) {
-            this.resetGame(e);
+    public void actionPerformed(ActionEvent e) { 
+    	// Outra função de escuta, 
+    	//para os elementos da tela inicial do jogo
+        
+    	if (e.getSource() == this.newButton) {
+            this.resetGame(e); 
         }
         if (e.getSource() == this.backButton) {
             this.resetGame(e);
         }
-
+        
+        // loop que procura por atualizações na tela, e confere se o jogo acabou
         for (QwertyButton qwertyButton : this.qwertyKeyboard.getButtons()) {
             if (e.getSource() == qwertyButton) {
                 this.updateScreen(qwertyButton);
